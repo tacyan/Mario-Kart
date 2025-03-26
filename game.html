@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マリオカート風ゲーム - 起動ページ</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #87ceeb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      color: white;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .start-button {
+      background-color: #ff5a5f;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .start-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+    .instructions {
+      margin-top: 20px;
+      max-width: 600px;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>マリオカート風モバイルゲーム</h1>
+  <button class="start-button" onclick="startGame()">ゲームを開始</button>
+  <div class="instructions">
+    <p>ゲームを開始するには上のボタンをクリックしてください。</p>
+    <p>※このゲームはHTTPサーバー上で実行される必要があります。</p>
+  </div>
+
+  <script>
+    /**
+     * ゲームを開始する関数
+     * @description ユーザーをゲームのメインページにリダイレクトします
+     */
+    function startGame() {
+      window.location.href = './index.html';
+    }
+
+    // ページロード時に自動的にゲームが起動できるか確認
+    window.addEventListener('DOMContentLoaded', function() {
+      // サーバー環境で実行されているか確認（簡易的な判定）
+      if (window.location.protocol.includes('http')) {
+        console.log('サーバー環境で実行されています。ゲームの起動が可能です。');
+      } else {
+        alert('このゲームはHTTPサーバー上で実行する必要があります。\nコマンドプロンプトでプロジェクトのディレクトリに移動し、「npx http-server」を実行してください。');
+      }
+    });
+  </script>
+</body>
+</html> 
